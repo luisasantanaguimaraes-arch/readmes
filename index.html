@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amélie | Confeitaria Artesanal</title>
+    <style>
+        /* Configurações Globais e Resets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', 'Georgia', serif;
+        }
+
+        :root {
+            --cor-primaria: #6e473b;      /* Marrom cacau elegante */
+            --cor-secundaria: #d4a373;    /* Dourado/Caramelo suave */
+            --cor-fundo: #fefae0;         /* Creme/Off-white quente */
+            --cor-texto: #4a3728;         /* Marrom escuro para leitura */
+            --branco: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--branco);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        /* Auxiliares */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--cor-primaria);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--cor-texto);
+            margin-left: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--cor-secundaria);
+        }
+
+        /* --- MAIN CONTENT --- */
+        main {
+            margin-top: 80px; /* Desconto do header fixo */
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                        url('https://images.unsplash.com/photo-1519869325930-281384150729?q=80&w=1600') no-repeat center center/cover;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--branco);
+            padding: 0 20px;
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        /* Seções Gerais */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--cor-primaria);
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background-color: var(--cor-secundaria);
+            margin: 10px auto 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-style: italic;
+            color: #888;
+            margin-bottom: 50px;
+        }
+
+        /* Sobre Nós */
+        .sobre-grid {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .sobre-texto {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .sobre-texto p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .sobre-img {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .sobre-img img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 15px 15px 0px var(--cor-fundo);
+        }
+
+        /* Cardápio Vitrine */
+        .menu-bg {
+            background-color: var(--cor-fundo);
+        }
+
+        .vitrine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .produto-card {
+            background: var(--branco);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s;
+        }
+
+        .produto-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .produto-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .produto-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .produto-info h3 {
+            font-size: 1.3rem;
+            color: var(--cor-primaria);
+            margin-bottom: 10px;
+        }
+
+        .produto-info p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 15px;
+            height: 45px;
+            overflow: hidden;
+        }
+
+        .produto-preco {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--cor-secundaria);
+        }
+
+        /* Encomendas / Contato */
+        .contato-box {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contato-box p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .btn-encomenda {
+            display: inline-block;
+            background-color: var(--cor-primaria);
+            color: var(--branco);
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: background 0.3s;
+        }
+
+        .btn-encomenda:hover {
+            background-color: var(--cor-secundaria);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--cor-primaria);
+            color: var(--branco);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav a {
+                margin: 0 10px;
+            }
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+            section {
+                padding: 50px 0;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">AMÉLIE</a>
+            <nav>
+                <a href="#atelier">O Atelier</a>
+                <a href="#menu">Menu</a>
+                <a href="#encomendas">Encomendas</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <div class="hero-content">
+                <h2>Alta Confeitaria Artesanal</h2>
+                <p>Momentos doces moldados à mão, com afeto e sofisticação.</p>
+                <a href="#menu" class="btn-encomenda" style="background-color: var(--cor-secundaria);">Conhecer Menu</a>
+            </div>
+        </div>
+
+        <section id="atelier">
+            <div class="container">
+                <div class="sobre-grid">
+                    <div class="sobre-texto">
+                        <h2 class="section-title" style="text-align: left; display: inline-block;">O Atelier</h2>
+                        <p style="margin-top: 30px;">Na Amélie, entendemos que a confeitaria é uma forma de arte que envolve todos os sentidos. Nascemos do desejo de resgatar as receitas clássicas francesas combinadas com o toque caloroso dos ingredientes brasileiros.</p>
+                        <p>Cada bolo, bombom e macaron que sai da nossa cozinha é produzido em pequenos lotes sob encomenda, garantindo o frescor, a textura perfeita e um equilíbrio inesquecível de sabores.</p>
+                    </div>
+                    <div class="sobre-img">
+                        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=600" alt="Chef confeiteira finalizando um doce">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="menu-bg">
+            <div class="container">
+                <h2 class="section-title">Nossas Criações</h2>
+                <p class="subtitle">Uma seleção exclusiva de sabores para o seu paladar</p>
+                
+                <div class="vitrine-grid">
+                    <div class="produto-card">
+                        <div class="produto-img" style="background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=500');"></div>
+                        <div class="produto-info">
+                            <h3>Bolo Belga Trufado</h3>
+                            <p>Massa chiffon de cacau 100%, recheio cremoso de chocolate belga e cobertura de ganache acetinada.</p>
+                            <span class="produto-preco">R$ 145,00 /kg</span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <div class="produto-img" style="background-image: url('https://images.unsplash.com/photo-1569864358642-9d1684040f43?q=80&w=500');"></div>
+                        <div class="produto-info">
+                            <h3>Macarons Coleção</h3>
+                            <p>Caixa com 6 unidades dos autênticos macarons franceses. Sabores: Pistache, Baunilha e Framboesa.</p>
+                            <span class="produto-preco">R$ 48,00</span>
+                        </div>
+                    </div>
+
+                    <div class="produto-card">
+                        <div class="produto-img" style="background-image: url('https://images.unsplash.com/photo-1535141192574-5d4897c13636?q=80&w=500');"></div>
+                        <div class="produto-info">
+                            <h3>Red Velvet Premium</h3>
+                            <p>Massa aveludada com toque de baunilha, recheio leve de cream cheese frosting e frutas vermelhas frescas.</p>
+                            <span class="produto-preco">R$ 130,00 /kg</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="encomendas">
+            <div class="container">
+                <div class="contato-box">
+                    <h2 class="section-title">Encomende seu Momento</h2>
+                    <p class="subtitle">Trabalhamos exclusivamente sob reserva antecipada</p>
+                    <p>Deseja um bolo personalizado para o seu evento ou quer garantir os seus doces do final de semana? Atendemos de forma exclusiva via WhatsApp para alinhar cada detalhe do seu pedido.</p>
+                    <a href="https://wa.me/seu-numero" target="_blank" class="btn-encomenda">Solicitar Orçamento</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Amélie Atelier de Confeitaria. Todos os direitos reservados.</p>
+            <p>Atendimento de Terça a Sábado, das 10h às 19h.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
